@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECURITY SYSTEM - 20/11 Thầy Dương</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="flicker-overlay"></div>
+    <div class="vignette"></div>
+
+    <button id="music-btn" class="music-btn">AUDIO: OFF [🔇]</button>
+    
+    <audio id="bg-music" loop>
+        <source src="nhac.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <!-- Màn hình 1: Hộp quà -->
+        <div id="gift-screen" class="gift-box">
+            <div class="camera-tag">CAM 01 // SECURITY_GIFT_BOX</div>
+            <div class="gift-icon">🐻</div>
+            <h2>[ ! ] CÓ MỘT GÓI HÀNG BÍ MẬT GỬI ĐẾN THẦY DƯƠNG</h2>
+            <p class="hint">BẤM ĐỂ TRUY CẬP VÀ MỞ HỆ THỐNG</p>
+        </div>
+
+        <!-- Màn hình 2: Tấm thiệp camera giám sát -->
+        <div id="card-screen" class="card hidden">
+            <div class="card-border">
+                <div class="camera-header">
+                    <span>🔴 REC [CAM 04: LỚP KỸ NĂNG MỀM]</span>
+                    <span class="battery-drain">BATTERY: 20-11%</span>
+                </div>
+                
+                <h1>CHÚC MỪNG 20/11 THẦY DƯƠNG</h1>
+                <div class="divider">⚡ SYSTEM OVERRIDE ⚡</div>
+                
+                <p id="wish-text" class="wish-content"></p>
+                
+                <div class="signature">— ĐỘI NGŨ NHÂN SỰ LỚP KỸ NĂNG MỀM & KHỞI NGHIỆP —</div>
+                
+                <!-- Mini-game 1: Gọi vốn -->
+                <div id="pitch-box" class="pitch-box">
+                    <p class="pitch-question">⚠️ <b>BẢO MẬT HỆ THỐNG:</b> Thầy có đồng ý cho thiệp mời của em được 10 điểm không?</p>
+                    <div class="pitch-buttons">
+                        <button id="yes-btn" class="action-btn yes-btn">🛡️ XÁC NHẬN CẤP QUYỀN</button>
+                        <button id="no-btn" class="no-btn">🤖 HỆ THỐNG TỪ CHỐI...</button>
+                    </div>
+                </div>
+
+                <!-- Thành công -->
+                <div id="deal-success" class="deal-success hidden">
+                    <div class="deal-badge">🏆 ACCESS GRANTED: NHÀ ĐẦU TƯ HUYỀN THOẠI 🏆</div>
+                    <p>Chúc Thầy Dương một ngày 20/11 an toàn, bùng nổ và tràn ngập niềm vui!</p>
+                    <div class="deal-actions">
+                        <button id="confetti-btn" class="action-btn">🎉 KÍCH HOẠT PHÁO HOA</button>
+                        <button id="open-cards-btn" class="action-btn card-game-btn">🃏 TRUY CẬP DỮ LIỆU THẺ BÀI</button>
+                    </div>
+                </div>
+
+                <!-- Mini-game 2: Thẻ bài 3D -->
+                <div id="tarot-box" class="tarot-box hidden">
+                    <p class="tarot-title">⚡ CHỌN MỘT MÃ DỮ LIỆU ĐỂ GIẢI MÃ ⚡</p>
+                    <div class="cards-grid">
+                        <div class="flip-card" onclick="flipCard(this)">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <span class="card-symbol">👾</span>
+                                    <span>FILE_01.DAT</span>
+                                </div>
+                                <div class="flip-card-back">
+                                    <b>UNICORN PROTOCOL</b>
+                                    <p>Chúc mọi dự án và ý tưởng khởi nghiệp của Thầy tăng trưởng vượt bậc!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card" onclick="flipCard(this)">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <span class="card-symbol">⚡</span>
+                                    <span>FILE_02.DAT</span>
+                                </div>
+                                <div class="flip-card-back">
+                                    <b>POWER SURGE</b>
+                                    <p>Chúc Thầy luôn đầy ắp năng lượng, không bao giờ lo cạn kiệt pin!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card" onclick="flipCard(this)">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <span class="card-symbol">🛡️</span>
+                                    <span>FILE_03.DAT</span>
+                                </div>
+                                <div class="flip-card-back">
+                                    <b>MASTER NODE</b>
+                                    <p>Cảm ơn Thầy đã luôn là người dẫn đường vững chắc cho tụi em!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
